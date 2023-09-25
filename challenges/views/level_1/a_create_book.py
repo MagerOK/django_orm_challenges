@@ -17,7 +17,7 @@ def create_book(title: str, author_full_name: str, isbn: str) -> Book:
         title=title,
         author_full_name=author_full_name,
         isbn=isbn,
-        )
+    )
     return book
 
 

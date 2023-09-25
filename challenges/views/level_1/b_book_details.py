@@ -16,7 +16,7 @@ from challenges.models import Book
 
 def get_book(book_id: int) -> Book | None:
     book = Book.objects.filter(pk=book_id).first()
-    return None if book is None else book
+    return book
 
 
 def book_details_handler(request: HttpRequest, book_id: int) -> HttpResponse:

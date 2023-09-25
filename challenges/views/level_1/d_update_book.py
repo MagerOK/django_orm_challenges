@@ -10,17 +10,16 @@
 from django.http import HttpRequest, HttpResponse, HttpResponseBadRequest, JsonResponse
 
 from challenges.models import Book
-# Надеюсь не считерил, выглядит логично)
-from challenges.views.level_1.b_book_details import get_book
 
 
 def update_book(book_id: int, new_title: str, new_author_full_name: str, new_isbn: str) -> Book | None:
-    book = get_book(book_id)
-    if book:
-        book.title = new_title
-        book.author_full_name = new_author_full_name
-        book.isbn = new_isbn
-        book.save()
+    book = Book.objects.filter(pk=book_id).first()
+    if book is None:
+        return None
+    book.title = new_title
+    book.author_full_name = new_author_full_name
+    book.isbn = new_isbn
+    book.save()
     return book
 
 
