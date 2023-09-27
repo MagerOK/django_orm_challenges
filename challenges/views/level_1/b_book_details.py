@@ -15,8 +15,8 @@ from challenges.models import Book
 
 
 def get_book(book_id: int) -> Book | None:
-    # код писать тут
-    pass
+    book = Book.objects.filter(pk=book_id).first()
+    return book
 
 
 def book_details_handler(request: HttpRequest, book_id: int) -> HttpResponse:
